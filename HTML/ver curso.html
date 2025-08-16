@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ver Curso</title>
+  <style>
+    body {
+      background: #1c1c3c;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    iframe {
+      width: 80%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+  </style>
+  <header>
+    <h1>Tecnología Fácil</h1>
+    <nav>
+      <a href="app.html">Inicio</a>
+      <a href="#">Mi Perfil</a>
+      <a href="cursos.html">Cursos</a>
+    </nav>
+  </header>
+</head>
+<body>
+
+  <h1 id="tituloCurso">Cargando curso...</h1>
+  <iframe id="videoCurso" src="" allowfullscreen></iframe>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const curso = urlParams.get("curso");
+
+    const cursosDisponibles = {
+      informatica: {
+        titulo: "Curso de Informática Básica",
+        video: "https://youtu.be/4mmB2jUOcHY"
+      },
+      redes: {
+        titulo: "Internet y Redes Sociales",
+        video: "https://www.youtube.com/embed/eDMTzlXZKHw"
+      },
+      celulares: {
+        titulo: "Uso Seguro de Celulares",
+        video: "https://www.youtube.com/embed/Y0N9TPlUP8A"
+      },
+      videollamadas: {
+        titulo: "Videollamadas y Reuniones Virtuales",
+        video: "https://www.youtube.com/embed/r1IEm2StFCM"
+      },
+      tramites: {
+        titulo: "Trámites Digitales",
+        video: "https://www.youtube.com/embed/CV92uR8F-1s"
+      }
+    };
+
+    if (cursosDisponibles[curso]) {
+      document.getElementById("tituloCurso").textContent = cursosDisponibles[curso].titulo;
+      document.getElementById("videoCurso").src = cursosDisponibles[curso].video;
+    } else {
+      document.getElementById("tituloCurso").textContent = "Curso no encontrado.";
+    }
+  </script>
+
+</body>
+</html>
